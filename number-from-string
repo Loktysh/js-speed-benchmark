@@ -1,0 +1,19 @@
+const a1 = [...new Array(10000000)].map((e)=>e =  Math.round(Math.random()*666)+'');
+const transformPlus = _ => +_;
+const transformString = _ => String(_);
+const transformNumber = _ => Number(_);
+console.time('Plus');
+for (let i = 0; i < 10000000; i += 1) {
+  transformPlus(a1[i]);
+}
+console.timeEnd('Plus');
+console.time('toString');
+for (let i = 0; i < 10000000; i += 1) {
+  transformString(a1[i])
+}
+console.timeEnd('toString');
+console.time('toNumber');
+for (let i = 0; i < 10000000; i += 1) {
+  transformNumber(a1[i])
+}
+console.timeEnd('toNumber');
