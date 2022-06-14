@@ -1,19 +1,31 @@
 const a1 = [...new Array(10000000)].map((e)=>e =  Math.round(Math.random()*666)+'');
-const transformPlus = _ => +_;
-const transformString = _ => String(_);
-const transformNumber = _ => Number(_);
 console.time('Plus');
 for (let i = 0; i < 10000000; i += 1) {
-  transformPlus(a1[i]);
+  +a1[i];
 }
 console.timeEnd('Plus');
-console.time('toString');
+console.time('parseInt');
 for (let i = 0; i < 10000000; i += 1) {
-  transformString(a1[i])
+  parseInt(a1[i])
 }
-console.timeEnd('toString');
-console.time('toNumber');
+console.timeEnd('parseInt');
+console.time('Number');
 for (let i = 0; i < 10000000; i += 1) {
-  transformNumber(a1[i])
+  Number(a1[i])
 }
-console.timeEnd('toNumber');
+console.timeEnd('Number');
+console.time('Math.floor()');
+for (let i = 0; i < 10000000; i += 1) {
+  Math.floor(a1[i])
+}
+console.timeEnd('Math.floor()');
+console.time('Double tilde (~~)');
+for (let i = 0; i < 10000000; i += 1) {
+  ~~a1[i];
+}
+console.timeEnd('Double tilde (~~)');
+console.time('Multiply with number');
+for (let i = 0; i < 10000000; i += 1) {
+  a1[i]*1;
+}
+console.timeEnd('Multiply with number');
